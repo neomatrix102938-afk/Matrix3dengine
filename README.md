@@ -1,34 +1,44 @@
-# Matrix3dengine
-Matrix 3D Infinite Canvas Engine  A C# 3D console render engine with an inverted white theme, TCP multiplayer, sandbox commands (/tp, /kill), and a live HUD. Features relative WASD movement based on where you look using a Mouse or Arrow keys. Perfect for infinite custom scene building!
-✨ Features
+Markdown
 
-    🗺️ Infinite Canvas: The environment spans infinitely, allowing you to travel through coordinates unbound by map borders.
+# 3D Console Wireframe Render Engine
 
-    🖱️ Hybrid Camera Look: Smoothly rotate your view using your Mouse or use the classic Arrow Keys.
+A lightweight, from-scratch 3D wireframe graphics engine built entirely in C# that renders 3D geometry inside a standard text terminal console using ASCII/ANSI characters.
 
-    🧭 True Relative Movement: Pressing WASD moves your character exactly where your camera is looking using pure trigonometric vector matrices.
+## Features
 
-    🌐 Built-in TCP Multiplayer Server: Host a room or join a friend's IP address to run around the same coordinates in real-time.
+- **Pure Software Renderer:** No heavy graphics libraries (like OpenGL or DirectX)—built using pure mathematical vertex projection.
+- **Dynamic 3D Camera:** Move around the sandbox world using `W`, `A`, `S`, `D` and use the arrow keys or mouse tracking to look around in 3D space.
+- **Physics System:** Built-in jump physics and basic gravity simulation (`Spacebar`).
+- **Auto-Centering OBJ Parser:** Automatically parses and centers standard custom low-poly `.obj` files to sit perfectly on the map workspace layout.
+- **Live Terminal HUD:** Displays live player coordinates (`XYZ`) and status indicators.
+- **Integrated Terminal Chat/Command Input:** Press `Enter` to access a command line console window natively inside the application runtime.
 
-    💬 Overhead Chat & Console Commands: Type /tp X Y Z to teleport anywhere in the endless void, or use /kill to reset your coordinates.
+## Controls
 
-    📊 Live HUD Overlay: Displays your current X, Y, Z coordinates and online player counts at the top of the screen in real-time.
+| Key | Action |
+| --- | --- |
+| **W / S** | Move Forward / Backward |
+| **A / D** | Strafe Left / Right |
+| **Arrow Keys** | Look Up / Down / Left / Right |
+| **Spacebar** | Jump |
+| **Enter** | Open/Close Terminal Chat & Commands Line |
 
-🎮 Controls
+### Commands
+* `/tp spawn` or `/kill` - Teleports your camera matrix instantly back to the core spawn block.
+* `/tp <X> <Y> <Z>` - Teleports the camera to exact coordinates.
 
-    W / S — Move Forward / Backward (relative to view)
+## How to Run
 
-    A / D — Strafe Left / Right (relative to view)
+1. Make sure you have the [.NET SDK](https://dotnet.microsoft.com/download) installed.
+2. Clone or download this project folder.
+3. Open your terminal in the project directory and run:
+   ```bash
+   dotnet run
 
-    Mouse / Arrow Keys — Look Around / Rotate Camera Angle
+Custom 3D Models
 
-    Enter — Open Command / Chat Input Prompt
+To load your own custom geometry, place an untextured low-poly .obj file inside the root directory and name it model.obj.
 
-🚀 Quick Start
+    ⚠️ Important: To maintain a smooth frame rate in the terminal window, make sure your custom .obj file is a low-poly asset and under 2 MB in size. Files with too many polygons will slow down the real-time render loop.
 
-Ensure you have the .NET SDK installed, then run:
-Bash
-
-dotnet run
-
-Choose h to Host a new server locally, or j to join a friend's hosted IP address!
+The engine's built-in parser will automatically normalize its bounds math, center it, and draw it on screen alongside the default spawn structures!
